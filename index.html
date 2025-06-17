@@ -28,6 +28,130 @@
         </div>
     </div>
 
+    <!-- Модальне вікно для кошика -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content cart-modal">
+            <span class="close" onclick="closeCartModal()">&times;</span>
+            
+            <!-- Заголовок кошика -->
+            <div class="cart-header">
+                <h2>🛒 Ваш кошик</h2>
+            </div>
+
+            <!-- Пустий кошик -->
+            <div class="empty-cart" id="emptyCart">
+                <div class="empty-cart-icon">🛒</div>
+                <p class="empty-cart-text">Ваша корзина пуста</p>
+                <button class="add-product-btn" onclick="addSampleProduct()">
+                    ➕ Додати товар в корзину
+                </button>
+            </div>
+
+            <!-- Кошик з товарами -->
+            <div class="cart-items" id="cartItems" style="display: none;">
+                <div class="items-list" id="itemsList">
+                    <!-- Тут будуть товари -->
+                </div>
+                
+                <div class="cart-actions">
+                    <button class="add-more-btn" onclick="addSampleProduct()">
+                        ➕ Додати ще товар
+                    </button>
+                </div>
+
+                <div class="cart-total">
+                    <div class="total-line">
+                        <span class="total-label">Сума замовлення:</span>
+                        <span class="total-amount" id="totalAmount">0 ₴</span>
+                    </div>
+                    <button class="order-btn" onclick="processOrder()">
+                        🛍️ Замовити
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальні вікна для профілю -->
+    <div class="modal" id="profileModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            
+            <!-- Головне меню профілю -->
+            <div class="profile-menu" id="profileMenu">
+                <h2>👤 Профіль користувача</h2>
+                <div class="profile-buttons">
+                    <button class="profile-btn login-btn" onclick="showLoginForm()">
+                        🔑 Вхід
+                    </button>
+                    <button class="profile-btn register-btn" onclick="showRegisterForm()">
+                        📝 Реєстрація
+                    </button>
+                </div>
+            </div>
+
+            <!-- Форма входу -->
+            <div class="auth-form" id="loginForm" style="display: none;">
+                <h2>🔑 Вхід в систему</h2>
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="loginEmail">Gmail:</label>
+                        <input type="email" id="loginEmail" required placeholder="example@gmail.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Пароль:</label>
+                        <input type="password" id="loginPassword" required placeholder="Введіть пароль">
+                    </div>
+                    <div class="form-buttons">
+                        <button type="submit" class="submit-btn">Увійти</button>
+                        <button type="button" class="back-btn" onclick="showProfileMenu()">Назад</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Форма реєстрації -->
+            <div class="auth-form" id="registerForm" style="display: none;">
+                <h2>📝 Реєстрація</h2>
+                <form onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label for="registerName">Ім'я:</label>
+                        <input type="text" id="registerName" required placeholder="Ваше ім'я">
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPhone">Номер телефону:</label>
+                        <input type="tel" id="registerPhone" required placeholder="+380XXXXXXXXX">
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Gmail:</label>
+                        <input type="email" id="registerEmail" required placeholder="example@gmail.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Пароль:</label>
+                        <input type="password" id="registerPassword" required placeholder="Створіть пароль">
+                    </div>
+                    <div class="form-buttons">
+                        <button type="submit" class="submit-btn">Зареєструватися</button>
+                        <button type="button" class="back-btn" onclick="showProfileMenu()">Назад</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Профіль зареєстрованого користувача -->
+            <div class="user-profile" id="userProfile" style="display: none;">
+                <h2>👋 Вітаємо!</h2>
+                <div class="user-info">
+                    <p><strong>Ім'я:</strong> <span id="userName"></span></p>
+                    <p><strong>Email:</strong> <span id="userEmail"></span></p>
+                    <p><strong>Телефон:</strong> <span id="userPhone"></span></p>
+                </div>
+                <div class="profile-actions">
+                    <button class="logout-btn" onclick="handleLogout()">Вийти</button>
+                    <button class="back-btn" onclick="closeModal()">Закрити</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="scripts.js"></script>
 </body>
 </html>
